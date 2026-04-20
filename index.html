@@ -1,185 +1,136 @@
 <!DOCTYPE html>
+
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קביעת תור | ריסים וגבות</title>
-
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{background:var(--cream);font-family:'Heebo',sans-serif;color:var(--deep);min-height:100vh}
-.mode-bar{background:var(--deep);padding:10px 20px;display:flex;justify-content:center;gap:12px}
-.mode-btn{padding:7px 22px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.7);border-radius:20px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.85rem;transition:all .2s}
-.mode-btn.active{background:var(--rose);border-color:var(--rose);color:white}
-header{text-align:center;padding:36px 20px 28px;background:#ffffff;border-bottom:1px solid var(--blush)}
-.logo-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
-.logo-top{display:flex;align-items:center;gap:10px}
-.logo-line{width:36px;height:1px;background:var(--rose);opacity:.6}
-.logo-icon{font-size:.8rem;color:var(--rose);opacity:.7;letter-spacing:2px}
-.logo-name{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:600;color:var(--deep);letter-spacing:2px;line-height:1}
-.logo-sub{font-size:.68rem;letter-spacing:4px;color:var(--rose);font-family:'Heebo',sans-serif;font-weight:400;text-transform:uppercase;margin-top:2px}
-.logo-tagline{font-size:.72rem;color:#888888;letter-spacing:1.5px;font-family:'Heebo',sans-serif;margin-top:5px;font-style:italic}
+  :root {
+    --cream:#fdf6ee; --blush:#e8c9b0; --rose:#c4826a;
+    --deep:#3d2b1f; --soft:#f5ebe0; --accent:#a0522d;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);font-family:'Heebo',sans-serif;color:var(--deep);min-height:100vh}
+
+.mode-bar{background:var(–deep);padding:10px 20px;display:flex;justify-content:center;gap:12px}
+.mode-btn{padding:7px 22px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.7);border-radius:20px;cursor:pointer;font-family:‘Heebo’,sans-serif;font-size:.85rem;transition:all .2s}
+.mode-btn.active{background:var(–rose);border-color:var(–rose);color:white}
+
+header{text-align:center;padding:40px 20px 25px;background:linear-gradient(160deg,#fdf0e4,#f5e6d3);border-bottom:1px solid var(–blush)}
+header h1{font-family:‘Playfair Display’,serif;font-size:2.2rem}
+header p{color:var(–rose);font-weight:300;margin-top:5px;letter-spacing:2px;font-size:.9rem}
+
 .admin-header{background:#2d3748;padding:25px 20px;text-align:center}
-.admin-header h1{font-family:'Playfair Display',serif;color:white;font-size:1.5rem}
+.admin-header h1{font-family:‘Playfair Display’,serif;color:white;font-size:1.5rem}
 .admin-header p{color:rgba(255,255,255,.5);font-size:.82rem;margin-top:4px}
+
 .container{max-width:620px;margin:0 auto;padding:28px 20px 60px}
+
 .card{background:white;border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 2px 16px rgba(61,43,31,.07);animation:fadeUp .4s forwards;opacity:0;transform:translateY(14px)}
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.1s}
-.card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.2s}
-.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.3s}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.1s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.card-title{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:16px}
+.card-title{font-family:‘Playfair Display’,serif;font-size:1rem;margin-bottom:16px}
+
 .date-picker-row{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-.date-picker-row input[type="date"]{flex:1;padding:10px 12px;border:2px solid var(--blush);border-radius:10px;font-family:'Heebo',sans-serif;font-size:.88rem;color:var(--deep);background:white;outline:none;transition:border .2s;min-width:140px}
-.date-picker-row input[type="date"]:focus{border-color:var(--rose)}
-.btn-pick-date{padding:10px 18px;background:var(--rose);color:white;border:none;border-radius:10px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.88rem;transition:all .2s;white-space:nowrap}
-.btn-pick-date:hover{background:var(--accent)}
-.date-block{border:1.5px solid var(--blush);border-radius:12px;margin-bottom:14px;overflow:hidden}
-.date-block-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--soft)}
+.date-picker-row input[type=“date”]{flex:1;padding:10px 12px;border:2px solid var(–blush);border-radius:10px;font-family:‘Heebo’,sans-serif;font-size:.88rem;color:var(–deep);background:white;outline:none;transition:border .2s;min-width:140px}
+.date-picker-row input[type=“date”]:focus{border-color:var(–rose)}
+.btn-pick-date{padding:10px 18px;background:var(–rose);color:white;border:none;border-radius:10px;cursor:pointer;font-family:‘Heebo’,sans-serif;font-size:.88rem;transition:all .2s;white-space:nowrap}
+.btn-pick-date:hover{background:var(–accent)}
+
+.date-block{border:1.5px solid var(–blush);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.date-block-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(–soft)}
 .dh-left{font-weight:500;font-size:.92rem}
 .dh-right{display:flex;align-items:center;gap:10px}
-.slot-count{color:var(--rose);font-size:.8rem}
-.btn-remove-date{background:none;border:1.5px solid #e0b0b0;color:#c0695a;border-radius:7px;padding:4px 9px;font-size:.74rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
+.slot-count{color:var(–rose);font-size:.8rem}
+.btn-remove-date{background:none;border:1.5px solid #e0b0b0;color:#c0695a;border-radius:7px;padding:4px 9px;font-size:.74rem;cursor:pointer;font-family:‘Heebo’,sans-serif;transition:all .2s}
 .btn-remove-date:hover{background:#fde8e8}
+
 .date-block-body{padding:14px 16px}
 .hours-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.hour-chip{padding:6px 12px;border-radius:20px;font-size:.82rem;display:flex;align-items:center;gap:6px;font-family:'Heebo',sans-serif}
+.hour-chip{padding:6px 12px;border-radius:20px;font-size:.82rem;display:flex;align-items:center;gap:6px;font-family:‘Heebo’,sans-serif}
 .hour-chip.free{background:#edf7ed;border:1.5px solid #9ae09a;color:#276227}
 .hour-chip.booked{background:#fde8e8;border:1.5px solid #e0b0b0;color:#7a2020}
 .chip-del{background:none;border:none;cursor:pointer;color:inherit;font-size:.9rem;line-height:1;padding:0;opacity:.7}
 .chip-del:hover{opacity:1}
+
 .add-hour-row{display:flex;gap:8px;align-items:center}
-.add-hour-row select{flex:1;padding:8px 10px;border:2px solid var(--blush);border-radius:9px;font-family:'Heebo',sans-serif;font-size:.86rem;color:var(--deep);background:white;outline:none;transition:border .2s}
-.add-hour-row select:focus{border-color:var(--rose)}
-.btn-add-hour{padding:8px 16px;background:var(--rose);color:white;border:none;border-radius:9px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.86rem;transition:all .2s;white-space:nowrap}
-.btn-add-hour:hover{background:var(--accent)}
+.add-hour-row select{flex:1;padding:8px 10px;border:2px solid var(–blush);border-radius:9px;font-family:‘Heebo’,sans-serif;font-size:.86rem;color:var(–deep);background:white;outline:none;transition:border .2s}
+.add-hour-row select:focus{border-color:var(–rose)}
+.btn-add-hour{padding:8px 16px;background:var(–rose);color:white;border:none;border-radius:9px;cursor:pointer;font-family:‘Heebo’,sans-serif;font-size:.86rem;transition:all .2s;white-space:nowrap}
+.btn-add-hour:hover{background:var(–accent)}
+
 .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;font-size:.78rem}
 .leg{display:flex;align-items:center;gap:5px}
 .leg-dot{width:10px;height:10px;border-radius:50%}
-.leg-dot.free{background:#9ae09a}.leg-dot.booked{background:#e0b0b0}
+.leg-dot.free{background:#9ae09a}
+.leg-dot.booked{background:#e0b0b0}
+
 .no-dates{text-align:center;color:#bbb;padding:24px;font-size:.86rem}
-.appt-item{display:flex;justify-content:space-between;align-items:flex-start;padding:12px;background:var(--soft);border-radius:10px;margin-bottom:8px;font-size:.86rem}
-.appt-item.arrived{background:#f0faf0;border:1.5px solid #c3e6c3}
-.appt-service{color:var(--rose);font-weight:500;margin-bottom:2px}
-.btn-delete{background:none;border:1.5px solid #e0b0b0;color:#c0695a;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
+
+.appt-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(–soft);border-radius:10px;margin-bottom:8px;font-size:.86rem}
+.appt-service{color:var(–rose);font-weight:500;margin-bottom:2px}
+.btn-delete{background:none;border:1.5px solid #e0b0b0;color:#c0695a;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:‘Heebo’,sans-serif;transition:all .2s;flex-shrink:0}
 .btn-delete:hover{background:#fde8e8}
-.btn-arrived{background:none;border:1.5px solid #9ae09a;color:#276227;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
-.btn-arrived:hover{background:#edf7ed}
 .no-appts{text-align:center;color:#bbb;padding:20px;font-size:.86rem}
-/* Delay panel */
-.delay-panel{background:#f5f5f5;border:1.5px solid #cccccc;border-radius:12px;padding:14px;margin-top:8px;margin-bottom:8px}
-.delay-panel-title{font-size:.84rem;font-weight:600;color:#111111;margin-bottom:10px}
-.delay-options{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.delay-opt{padding:7px 14px;border:1.5px solid #cccccc;border-radius:20px;cursor:pointer;font-size:.8rem;font-family:'Heebo',sans-serif;background:white;color:#333333;transition:all .2s}
-.delay-opt.selected{background:#111111;border-color:#111111;color:white}
-.delay-opt:hover{background:#e8e8e8}
-.affected-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
-.affected-item{display:flex;justify-content:space-between;align-items:center;background:white;border:1px solid #cccccc;border-radius:8px;padding:9px 12px;font-size:.82rem}
-/* Cancel panel */
-.cancel-panel{background:#f5f5f5;border:1.5px solid #cccccc;border-radius:12px;padding:14px;margin-top:8px;margin-bottom:8px}
-.cancel-panel-title{font-size:.84rem;font-weight:600;color:#111111;margin-bottom:10px}
-.standby-match{display:flex;justify-content:space-between;align-items:center;background:white;border:1px solid #cccccc;border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:.82rem}
-.no-standby-match{color:#bbb;font-size:.82rem;text-align:center;padding:8px}
-/* Reminder */
-.reminder-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f5f5f5;border:1px solid #cccccc;border-radius:10px;margin-bottom:8px;font-size:.84rem}
-/* Standby admin */
-.standby-entry{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--soft);border-radius:10px;margin-bottom:7px;font-size:.84rem}
-.standby-entry .sb-svc{color:var(--rose);font-weight:500;font-size:.82rem;margin-bottom:2px}
-/* WhatsApp buttons */
-.wa-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:#25D366;color:white;border:none;border-radius:8px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.76rem;text-decoration:none;transition:all .2s;white-space:nowrap}
-.wa-btn:hover{background:#1db954}
-.wa-btn-sm{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;background:#25D366;color:white;border:none;border-radius:7px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.74rem;text-decoration:none;transition:all .2s;white-space:nowrap}
-.wa-btn-sm:hover{background:#1db954}
-.btn-secondary{background:none;border:1.5px solid #ccc;color:#888;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
-.btn-secondary:hover{background:#f5f5f5}
-.btn-delay{background:none;border:1.5px solid #cccccc;color:#333333;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
-.btn-delay:hover{background:#eeeeee}
-.btn-cancel-appt{background:none;border:1.5px solid #cccccc;color:#333333;border-radius:8px;padding:5px 10px;font-size:.76rem;cursor:pointer;font-family:'Heebo',sans-serif;transition:all .2s}
-.btn-cancel-appt:hover{background:#eeeeee}
-/* CLIENT WIZARD */
-.stepper-wrap{background:white;border-bottom:1px solid var(--blush)}
-.stepper{display:flex;align-items:flex-start;padding:16px 20px;max-width:620px;margin:0 auto}
-.step-dot{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;z-index:1}
-.step-line{flex:1;height:2px;background:var(--blush);margin-top:12px;transition:background .3s}
-.step-line.done{background:var(--rose)}
-.dot-circle{width:26px;height:26px;border-radius:50%;border:2px solid var(--blush);background:white;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-family:'Heebo',sans-serif;color:#bbb;transition:all .3s}
-.step-dot.active .dot-circle{border-color:var(--rose);background:var(--rose);color:white}
-.step-dot.done .dot-circle{border-color:var(--rose);background:white;color:var(--rose)}
-.dot-label{font-size:.68rem;color:#bbb;font-family:'Heebo',sans-serif;white-space:nowrap}
-.step-dot.active .dot-label,.step-dot.done .dot-label{color:var(--rose)}
-.step-dot.done{cursor:pointer}
-.step-dot.done .dot-circle:hover{background:var(--blush)}
-.cat-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-.cat-card{border:2px solid var(--blush);border-radius:16px;padding:26px 16px;cursor:pointer;transition:all .25s;background:white;text-align:center}
-.cat-card:hover{border-color:var(--rose);transform:translateY(-2px);box-shadow:0 4px 20px rgba(196,130,106,.15)}
-.cat-card .cat-emoji{font-size:2.2rem;margin-bottom:10px}
-.cat-card .cat-name{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:4px}
-.cat-card .cat-sub{font-size:.74rem;color:var(--rose);line-height:1.5}
-.svc-list{display:flex;flex-direction:column;gap:10px}
-.svc-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:2px solid var(--blush);border-radius:12px;cursor:pointer;background:white;transition:all .2s}
-.svc-item:hover{border-color:var(--rose);background:#fdf8f5}
-.svc-item.selected{border-color:var(--rose);background:#fdf0e8}
-.svc-item .si-name{font-weight:500;font-size:.92rem}
-.svc-item .si-dur{font-size:.8rem;color:var(--rose)}
-.back-btn{background:none;border:none;color:var(--rose);font-family:'Heebo',sans-serif;font-size:.85rem;cursor:pointer;padding:0;margin-bottom:14px;display:flex;align-items:center;gap:4px}
-.back-btn:hover{color:var(--accent)}
-.step-heading{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:4px}
-.step-sub{font-size:.8rem;color:#aaa;margin-bottom:16px}
-.days-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-.day-card{padding:10px 6px;border:2px solid var(--blush);border-radius:12px;cursor:pointer;text-align:center;background:white;transition:all .2s}
-.day-card:hover{border-color:var(--rose)}
-.day-card.selected{border-color:var(--rose);background:var(--rose);color:white}
-.day-card .dc-day{font-size:.72rem;opacity:.75;margin-bottom:2px}
-.day-card .dc-date{font-size:.86rem;font-weight:500}
-.times-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.time-btn{padding:10px 4px;border:2px solid var(--blush);border-radius:10px;text-align:center;cursor:pointer;font-size:.84rem;font-family:'Heebo',sans-serif;background:white;transition:all .2s}
-.time-btn:hover{border-color:var(--rose)}
-.time-btn.selected{background:var(--rose);border-color:var(--rose);color:white;font-weight:500}
-.sel-summary{background:var(--soft);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:.84rem;line-height:2;border:1.5px solid var(--blush)}
-.sel-summary strong{color:var(--rose)}
-.quick-slots{margin-top:20px;border-top:1px solid var(--blush);padding-top:16px}
-.quick-slots-title{font-size:.74rem;color:#bbb;letter-spacing:1px;margin-bottom:10px;font-family:'Heebo',sans-serif}
-.quick-slot-item{display:flex;align-items:center;gap:8px;padding:10px 13px;border:1.5px solid var(--blush);border-radius:12px;background:white;cursor:pointer;margin-bottom:8px;transition:all .2s}
-.quick-slot-item:hover{border-color:var(--rose);background:#fdf8f5}
-.qs-day{font-size:.76rem;color:#aaa;min-width:68px}
-.qs-time{font-weight:600;font-size:.9rem;min-width:38px}
-.qs-svcs{display:flex;flex-wrap:wrap;gap:4px;flex:1}
-.qs-tag{padding:2px 7px;background:var(--soft);border-radius:20px;font-size:.7rem;color:var(--rose)}
-.qs-arrow{color:#ccc;font-size:.9rem;flex-shrink:0}
-.qs-picker{background:var(--soft);border:1.5px solid var(--blush);border-radius:12px;padding:12px 14px;margin-bottom:8px}
-.qs-pick-btn{padding:9px 13px;border:1.5px solid var(--blush);border-radius:10px;background:white;margin-bottom:7px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:.86rem;display:flex;justify-content:space-between;transition:all .2s}
-.qs-pick-btn:last-child{margin-bottom:0}
-.qs-pick-btn:hover{border-color:var(--rose);background:#fdf0e8}
-/* Standby client */
-.standby-section{margin-top:18px;border-top:1px solid var(--blush);padding-top:16px}
-.standby-section-title{font-size:.74rem;color:#333333;letter-spacing:1px;margin-bottom:10px;font-family:'Heebo',sans-serif;font-weight:500}
-.standby-form-inner{background:#f5f5f5;border:1.5px solid #cccccc;border-radius:12px;padding:14px}
-.standby-form-inner input{width:100%;padding:10px 12px;border:2px solid #cccccc;border-radius:9px;font-family:'Heebo',sans-serif;font-size:.88rem;color:var(--deep);background:white;outline:none;transition:border .2s;margin-bottom:10px;display:block}
-.standby-form-inner input:focus{border-color:#111111}
-.standby-form-inner label{color:#333333;font-size:.8rem;font-weight:500;display:block;margin-bottom:5px}
-.btn-standby-submit{width:100%;padding:11px;background:#111111;color:white;border:none;border-radius:10px;font-family:'Heebo',sans-serif;font-size:.88rem;cursor:pointer;transition:all .2s}
-.btn-standby-submit:hover{background:#333333}
-label{display:block;font-size:.8rem;color:var(--rose);margin-bottom:5px;font-weight:500}
-input[type="text"],input[type="tel"]{width:100%;padding:11px 13px;border:2px solid var(--blush);border-radius:10px;font-family:'Heebo',sans-serif;font-size:.9rem;color:var(--deep);background:white;outline:none;transition:border .2s;margin-bottom:12px}
-input[type="text"]:focus,input[type="tel"]:focus{border-color:var(--rose)}
-.btn-submit{width:100%;padding:15px;background:var(--rose);color:white;border:none;border-radius:12px;font-family:'Playfair Display',serif;font-size:1rem;cursor:pointer;letter-spacing:1px;transition:all .2s}
-.btn-submit:hover{background:var(--accent);transform:translateY(-1px)}
+
+.step-title{font-family:‘Playfair Display’,serif;font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.step-num{width:25px;height:25px;background:var(–rose);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-family:‘Heebo’,sans-serif;flex-shrink:0}
+
+.cat-tabs{display:flex;gap:10px;margin-bottom:14px}
+.cat-tab{flex:1;padding:10px;border:2px solid var(–blush);background:white;border-radius:10px;cursor:pointer;font-family:‘Heebo’,sans-serif;font-size:.9rem;color:var(–deep);transition:all .2s;text-align:center}
+.cat-tab.active,.cat-tab:hover{background:var(–rose);border-color:var(–rose);color:white}
+
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.service-card{border:2px solid var(–blush);border-radius:12px;padding:13px 11px;cursor:pointer;transition:all .2s;background:white}
+.service-card:hover{border-color:var(–rose)}
+.service-card.selected{border-color:var(–rose);background:#fdf0e8}
+.service-card .sname{font-weight:500;font-size:.86rem;margin-bottom:3px}
+.service-card .sdur{font-size:.74rem;color:var(–rose)}
+
+.days-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.day-pill{padding:7px 14px;border:2px solid var(–blush);border-radius:20px;cursor:pointer;font-size:.83rem;font-family:‘Heebo’,sans-serif;background:white;color:var(–deep);transition:all .2s}
+.day-pill:hover{border-color:var(–rose)}
+.day-pill.selected{background:var(–rose);border-color:var(–rose);color:white}
+
+.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.time-slot{padding:8px 4px;border:2px solid var(–blush);border-radius:8px;text-align:center;cursor:pointer;font-size:.82rem;font-family:‘Heebo’,sans-serif;background:white;transition:all .2s}
+.time-slot:hover{border-color:var(–rose)}
+.time-slot.selected{background:var(–rose);border-color:var(–rose);color:white;font-weight:500}
+
+.notice-box{background:#fff8f0;border:1.5px solid var(–blush);border-radius:10px;padding:12px 14px;font-size:.82rem;color:var(–accent);margin-bottom:14px;line-height:1.6}
+
+label{display:block;font-size:.8rem;color:var(–rose);margin-bottom:5px;font-weight:500}
+input[type=“text”],input[type=“tel”]{width:100%;padding:11px 13px;border:2px solid var(–blush);border-radius:10px;font-family:‘Heebo’,sans-serif;font-size:.9rem;color:var(–deep);background:white;outline:none;transition:border .2s;margin-bottom:12px}
+input[type=“text”]:focus,input[type=“tel”]:focus{border-color:var(–rose)}
+
+.btn-submit{width:100%;padding:15px;background:var(–rose);color:white;border:none;border-radius:12px;font-family:‘Playfair Display’,serif;font-size:1rem;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.btn-submit:hover{background:var(–accent);transform:translateY(-1px)}
+
 .success-screen{display:none;text-align:center;background:white;border-radius:16px;padding:46px 24px;box-shadow:0 2px 20px rgba(61,43,31,.07)}
 .success-screen .icon{font-size:2.8rem;margin-bottom:12px}
-.success-screen h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:8px}
-.success-screen p{color:var(--rose);font-size:.9rem;line-height:1.7}
-.summary-box{background:var(--soft);border-radius:10px;padding:14px 16px;margin-top:16px;text-align:right;font-size:.86rem;line-height:2}
-.standby-success{display:none;text-align:center;background:white;border-radius:16px;padding:40px 24px;box-shadow:0 2px 20px rgba(61,43,31,.07)}
+.success-screen h2{font-family:‘Playfair Display’,serif;font-size:1.5rem;margin-bottom:8px}
+.success-screen p{color:var(–rose);font-size:.9rem;line-height:1.7}
+.summary-box{background:var(–soft);border-radius:10px;padding:14px 16px;margin-top:16px;text-align:right;font-size:.86rem;line-height:2}
+
 .no-slots{text-align:center;color:#bbb;padding:14px;font-size:.86rem}
 .hidden{display:none !important}
+
+.loading{text-align:center;color:#bbb;padding:20px;font-size:.86rem}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#3d2b1f;color:white;padding:10px 22px;border-radius:20px;font-size:.85rem;font-family:‘Heebo’,sans-serif;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
 </style>
+
 </head>
 <body>
+
+<!-- Toast -->
+
+<div class="toast" id="toast"></div>
 
 <div class="mode-bar">
   <button class="mode-btn active" id="btnClient" onclick="switchMode('client')">👤 לקוחה</button>
@@ -187,163 +138,128 @@ input[type="text"]:focus,input[type="tel"]:focus{border-color:var(--rose)}
 </div>
 
 <!-- CLIENT -->
+
 <div id="clientView">
   <header>
-    <div class="logo-wrap">
-      <div class="logo-top">
-        <div class="logo-line"></div>
-        <span class="logo-icon">✦ ✦ ✦</span>
-        <div class="logo-line"></div>
-      </div>
-      <div class="logo-name">Wude</div>
-      <div class="logo-sub">Eyelashes &amp; Brows</div>
-      <div class="logo-tagline">קביעת תור</div>
-    </div>
+    <h1>✦ קביעת תור</h1>
+    <p>ריסים & גבות</p>
   </header>
+  <div class="container">
+    <div id="clientForm">
+      <div class="card">
+        <div class="step-title"><span class="step-num">1</span> בחרי שירות</div>
+        <div class="cat-tabs">
+          <button class="cat-tab active" onclick="switchCat('lashes',this)">ריסים 👁</button>
+          <button class="cat-tab" onclick="switchCat('brows',this)">גבות 🪄</button>
+        </div>
+        <div id="lashes" class="services-grid">
+          <div class="service-card" onclick="selectSvc(this,'ריסים בהלחמה',120)">
+            <div class="sname">ריסים בהלחמה</div><div class="sdur">⏱ 120 דק׳</div>
+          </div>
+          <div class="service-card" onclick="selectSvc(this,'ריסים קלאסי',90)">
+            <div class="sname">ריסים קלאסי</div><div class="sdur">⏱ 90 דק׳</div>
+          </div>
+          <div class="service-card" onclick="selectSvc(this,'ריסים וולום',120)">
+            <div class="sname">ריסים וולום</div><div class="sdur">⏱ 120 דק׳</div>
+          </div>
+          <div class="service-card" onclick="selectSvc(this,'השלמה',60)">
+            <div class="sname">השלמה</div><div class="sdur">⏱ 60 דק׳</div>
+          </div>
+        </div>
+        <div id="brows" class="services-grid hidden">
+          <div class="service-card" onclick="selectSvc(this,'עיצוב גבות',30)">
+            <div class="sname">עיצוב גבות</div><div class="sdur">⏱ 30 דק׳</div>
+          </div>
+          <div class="service-card" onclick="selectSvc(this,'הינה לגבות',45)">
+            <div class="sname">הינה לגבות</div><div class="sdur">⏱ 45 דק׳</div>
+          </div>
+          <div class="service-card" onclick="selectSvc(this,'ציפוי גבות',60)">
+            <div class="sname">ציפוי גבות</div><div class="sdur">⏱ 60 דק׳</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="stepper-wrap">
-    <div class="stepper">
-      <div class="step-dot active" id="prog1"><div class="dot-circle">1</div><div class="dot-label">קטגוריה</div></div>
-      <div class="step-line" id="line1"></div>
-      <div class="step-dot" id="prog2"><div class="dot-circle">2</div><div class="dot-label">שירות</div></div>
-      <div class="step-line" id="line2"></div>
-      <div class="step-dot" id="prog3"><div class="dot-circle">3</div><div class="dot-label">יום ושעה</div></div>
-      <div class="step-line" id="line3"></div>
-      <div class="step-dot" id="prog4"><div class="dot-circle">4</div><div class="dot-label">פרטים</div></div>
+```
+  <div class="card">
+    <div class="step-title"><span class="step-num">2</span> בחרי יום ושעה</div>
+    <label>ימים פנויים</label>
+    <div class="days-list" id="daysList"><div class="loading">טוען...</div></div>
+    <div id="slotsSection" class="hidden">
+      <div class="notice-box" id="noticeBox"></div>
+      <label>שעות זמינות לשירות שבחרת</label>
+      <div class="time-slots" id="slotsList"></div>
     </div>
+    <div id="noSlotsMsg" class="no-slots hidden">אין שעות פנויות מתאימות לשירות זה ביום זה</div>
   </div>
 
-  <div class="container">
-    <!-- Step 1 -->
-    <div id="step1">
-      <div class="card">
-        <div class="step-heading">במה תרצי לטפל היום?</div>
-        <div class="step-sub">בחרי קטגוריה להתחלה</div>
-        <div class="cat-cards">
-          <div class="cat-card" onclick="pickCategory('lashes')">
-            <div class="cat-emoji">👁</div>
-            <div class="cat-name">ריסים</div>
-            <div class="cat-sub">הלחמה · קלאסי<br>וולום · השלמה</div>
-          </div>
-          <div class="cat-card" onclick="pickCategory('brows')">
-            <div class="cat-emoji">🪄</div>
-            <div class="cat-name">גבות</div>
-            <div class="cat-sub">עיצוב · הינה<br>ציפוי</div>
-          </div>
-        </div>
-        <div class="quick-slots">
-          <div class="quick-slots-title">⚡ שעות פנויות קרובות</div>
-          <div id="quickSlotsList"></div>
-        </div>
-      </div>
-    </div>
+  <div class="card">
+    <div class="step-title"><span class="step-num">3</span> פרטים אישיים</div>
+    <label>שם מלא</label>
+    <input type="text" id="nameInput" placeholder="שם מלא">
+    <label>טלפון</label>
+    <input type="tel" id="phoneInput" placeholder="05X-XXXXXXX">
+  </div>
 
-    <!-- Step 2 -->
-    <div id="step2" class="hidden">
-      <div class="card">
-        <button class="back-btn" onclick="goToStep(1)">← חזרה</button>
-        <div class="step-heading" id="step2Heading">בחרי שירות</div>
-        <div class="step-sub">בחרי את הטיפול הרצוי</div>
-        <div class="svc-list" id="svcList"></div>
-      </div>
-    </div>
+  <div class="card" style="padding:16px">
+    <button class="btn-submit" onclick="submitBooking()">אישור קביעת תור ✦</button>
+  </div>
+</div>
 
-    <!-- Step 3 -->
-    <div id="step3" class="hidden">
-      <div class="card">
-        <button class="back-btn" onclick="goToStep(2)">← חזרה</button>
-        <div class="step-heading">בחרי יום ושעה</div>
-        <div class="step-sub" id="step3Sub"></div>
-        <label>ימים פנויים</label>
-        <div class="days-grid" id="daysGrid"></div>
-        <div id="timesSection" class="hidden">
-          <label>שעות זמינות</label>
-          <div class="times-grid" id="timesGrid"></div>
-        </div>
-        <div id="noTimesMsg" class="no-slots hidden">אין שעות פנויות לשירות זה ביום זה</div>
-        <div id="standbySection" class="standby-section hidden">
-          <div class="standby-section-title">⏳ הצטרפי לרשימת המתנה</div>
-          <p id="standbyJoinText" style="font-size:.83rem;color:#555;margin-bottom:12px"></p>
-          <div class="standby-form-inner">
-            <label>שם מלא</label>
-            <input type="text" id="sbNameInput" placeholder="שם מלא">
-            <label>טלפון (WhatsApp)</label>
-            <input type="tel" id="sbPhoneInput" placeholder="05X-XXXXXXX">
-            <button class="btn-standby-submit" onclick="submitStandby()">הצטרפי לרשימת המתנה ✦</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="success-screen" id="successScreen">
+  <div class="icon">✨</div>
+  <h2>התור נקבע!</h2>
+  <p>קיבלנו את הבקשה שלך.<br>ניצור איתך קשר לאישור.</p>
+  <div class="summary-box" id="summaryBox"></div>
+  <button class="btn-submit" style="margin-top:18px" onclick="resetClient()">קביעת תור נוסף</button>
+</div>
+```
 
-    <!-- Step 4 -->
-    <div id="step4" class="hidden">
-      <div class="card">
-        <button class="back-btn" onclick="goToStep(3)">← חזרה</button>
-        <div class="step-heading">פרטים אישיים</div>
-        <div class="sel-summary" id="selSummary"></div>
-        <label>שם מלא</label>
-        <input type="text" id="nameInput" placeholder="שם מלא">
-        <label>טלפון</label>
-        <input type="tel" id="phoneInput" placeholder="05X-XXXXXXX">
-        <button class="btn-submit" onclick="submitBooking()">אישור קביעת תור ✦</button>
-      </div>
-    </div>
-
-    <!-- Success -->
-    <div class="success-screen" id="successScreen">
-      <div class="icon">✨</div>
-      <h2>התור נקבע!</h2>
-      <p>קיבלנו את הבקשה שלך.<br>ניצור איתך קשר לאישור.</p>
-      <div class="summary-box" id="summaryBox"></div>
-      <button class="btn-submit" style="margin-top:18px" onclick="resetClient()">קביעת תור נוסף</button>
-    </div>
-
-    <!-- Standby Success -->
-    <div class="standby-success" id="standbySuccessScreen">
-      <div style="font-size:2.4rem;margin-bottom:10px">⏳</div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px">נרשמת לרשימת המתנה!</h2>
-      <p style="color:#555555;font-size:.88rem;line-height:1.7">נשלח לך הודעת WhatsApp<br>אם יפנה מקום לשירות שבחרת.</p>
-      <button class="btn-submit" style="margin-top:18px;background:#111111" onclick="resetClient()">חזרה לתפריט</button>
-    </div>
   </div>
 </div>
 
 <!-- ADMIN -->
+
 <div id="adminView" class="hidden">
   <div class="admin-header">
     <h1>⚙️ פאנל ניהול</h1>
     <p>הוסיפי תאריכים ושעות פנויות</p>
   </div>
   <div class="container">
-    <div id="revenueCard" class="card" style="background:linear-gradient(135deg,#2d3748,#3d4f63);color:white"></div>
-
-    <div id="remindersCard" class="card hidden">
-      <div class="card-title">⏰ תזכורות — תורים בשעה הקרובה</div>
-      <div id="remindersList"></div>
-    </div>
-
     <div class="card">
       <div class="card-title">📅 זמינות לפי תאריך</div>
       <div class="date-picker-row">
         <input type="date" id="newDateInput">
         <button class="btn-pick-date" onclick="addDate()">+ הוסיפי תאריך</button>
       </div>
-      <div id="dateBlocks"></div>
+      <div id="dateBlocks"><div class="loading">טוען...</div></div>
     </div>
-
     <div class="card">
       <div class="card-title">📋 תורים קבועים</div>
-      <div id="apptList"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">⏳ רשימת המתנה</div>
-      <div id="standbyList"></div>
+      <div id="apptList"><div class="loading">טוען...</div></div>
     </div>
   </div>
 </div>
 
-<script>
+<!-- Firebase -->
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, collection, onSnapshot, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDEw3xhipyt7Vm8AFU7aDeyaBDkFVvCL30",
+  authDomain: "wude-eyelashes.firebaseapp.com",
+  projectId: "wude-eyelashes",
+  storageBucket: "wude-eyelashes.firebasestorage.app",
+  messagingSenderId: "1018490973775",
+  appId: "1:1018490973775:web:8e15259e12a529e964043a",
+  measurementId: "G-ZKR55YQHJM"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ===== HELPERS =====
 const DAYS_HE = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
 const ALL_HOURS = [];
 for(let h=7;h<=21;h++){ ALL_HOURS.push(pad(h)+':00'); ALL_HOURS.push(pad(h)+':30'); }
@@ -351,463 +267,97 @@ function pad(n){ return String(n).padStart(2,'0') }
 function timeToMin(t){ const[h,m]=t.split(':').map(Number); return h*60+m }
 function minToTime(m){ return pad(Math.floor(m/60))+':'+pad(m%60) }
 
-let avail  = JSON.parse(localStorage.getItem('avail3')   || '{}');
-let appts  = JSON.parse(localStorage.getItem('appts3')   || '[]');
-let standby= JSON.parse(localStorage.getItem('standby3') || '[]');
-
-let selSvc='', selDur=0, selDay=null, selTime='', selCat='';
-
-const PRICES = {
-  'ריסים בהלחמה':350,'ריסים קלאסי':280,'ריסים וולום':350,'השלמה':180,
-  'עיצוב גבות':80,'הינה לגבות':120,'ציפוי גבות':150
-};
-const LASHES_SVCS = [
-  {name:'ריסים בהלחמה',dur:120},{name:'ריסים קלאסי',dur:90},
-  {name:'ריסים וולום',dur:120},{name:'השלמה',dur:60}
-];
-const BROWS_SVCS = [
-  {name:'עיצוב גבות',dur:30},{name:'הינה לגבות',dur:45},{name:'ציפוי גבות',dur:60}
-];
-const ALL_SVCS = [...LASHES_SVCS, ...BROWS_SVCS];
-
-function getSvcName(s){ return s.replace(/\s*\(\d+\s*דק׳\)/,'') }
-function getPrice(s){ return PRICES[getSvcName(s)] || 0 }
-function waLink(phone, msg){
-  const n = phone.replace(/\D/g,'').replace(/^0/,'972');
-  return `https://wa.me/${n}?text=${encodeURIComponent(msg)}`;
+function showToast(msg){ 
+  const t=document.getElementById('toast'); 
+  t.textContent=msg; t.classList.add('show'); 
+  setTimeout(()=>t.classList.remove('show'),2500); 
 }
 
-function saveAll(){
-  localStorage.setItem('avail3',   JSON.stringify(avail));
-  localStorage.setItem('appts3',   JSON.stringify(appts));
-  localStorage.setItem('standby3', JSON.stringify(standby));
-}
+// ===== STATE =====
+let avail = {}; // { dateStr: [hours] }
+let appts = []; // [{id, svc, dur, dateStr, dayLabel, time, name, phone}]
+let selSvc='', selDur=0, selDay=null, selTime='';
 
-// ── WIZARD ──────────────────────────────────────────────────────────────────
+// ===== FIRESTORE LISTENERS =====
+// Listen to availability
+onSnapshot(collection(db,'availability'), snap => {
+  avail = {};
+  snap.forEach(d => { avail[d.id] = d.data().hours || []; });
+  renderDays();
+  if(!document.getElementById('adminView').classList.contains('hidden')) renderAdmin();
+});
 
-function goToStep(n){
-  for(let i=1;i<=4;i++){
-    document.getElementById('step'+i).classList.toggle('hidden',i!==n);
-    const dot=document.getElementById('prog'+i);
-    dot.classList.toggle('active',i===n);
-    dot.classList.toggle('done',i<n);
-    dot.onclick = i<n ? ()=>goToStep(i) : null;
-  }
-  for(let i=1;i<=3;i++) document.getElementById('line'+i).classList.toggle('done',i<n);
-  if(n===1) renderQuickSlots();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+// Listen to appointments
+onSnapshot(query(collection(db,'appointments'), orderBy('dateStr'), orderBy('time')), snap => {
+  appts = [];
+  snap.forEach(d => appts.push({id: d.id, ...d.data()}));
+  if(!document.getElementById('adminView').classList.contains('hidden')) renderAppts();
+});
 
-function renderQuickSlots(){
-  const el = document.getElementById('quickSlotsList');
-  const today = new Date().toISOString().split('T')[0];
-  const dates = Object.keys(avail).filter(d=>d>=today).sort();
-  const items = [];
-  dates.forEach(dateStr=>{
-    const d = new Date(dateStr+'T12:00:00');
-    const dayLabel = DAYS_HE[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1);
-    const allStarts = new Set();
-    ALL_SVCS.forEach(s=>getAvailableStarts(dateStr,s.dur).forEach(t=>allStarts.add(t)));
-    [...allStarts].sort().forEach(time=>{
-      const svcs = ALL_SVCS.filter(s=>getAvailableStarts(dateStr,s.dur).includes(time));
-      items.push({dateStr,dayLabel,time,svcs});
-    });
-  });
-  window._quickItems = items;
-  const limited = items.slice(0,8);
-  if(!limited.length){
-    el.innerHTML='<div style="color:#bbb;font-size:.83rem;text-align:center;padding:12px">אין שעות פנויות כרגע</div>';
-    return;
-  }
-  el.innerHTML = limited.map((item,idx)=>`
-    <div class="quick-slot-item" onclick="quickBook(${idx})">
-      <span class="qs-day">${item.dayLabel}</span>
-      <span class="qs-time">${item.time}</span>
-      <div class="qs-svcs">${item.svcs.map(s=>`<span class="qs-tag">${s.name}</span>`).join('')}</div>
-      <span class="qs-arrow">‹</span>
-    </div>`).join('');
-}
-
-function quickBook(idx){
-  const item = window._quickItems[idx];
-  selDay={dateStr:item.dateStr,lbl:item.dayLabel}; selTime=item.time;
-  if(item.svcs.length===1){
-    const s=item.svcs[0]; selSvc=s.name; selDur=s.dur;
-    setSummary(); goToStep(4);
-  } else {
-    document.querySelectorAll('.qs-picker').forEach(p=>p.remove());
-    const picker = document.createElement('div');
-    picker.className='qs-picker';
-    picker.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <div style="font-size:.8rem;color:var(--rose)">בחרי שירות לשעה ${item.time}:</div>
-      <button onclick="document.querySelectorAll('.qs-picker').forEach(p=>p.remove())" style="background:none;border:none;cursor:pointer;color:#bbb;font-size:1rem;padding:0">✕</button>
-    </div>`+
-      item.svcs.map(s=>`<div class="qs-pick-btn" onclick="quickPickSvc('${item.dateStr}','${item.dayLabel}','${item.time}','${s.name}',${s.dur})">
-        ${s.name}<span style="color:var(--rose);font-size:.76rem">⏱ ${s.dur} דק׳</span>
-      </div>`).join('');
-    document.querySelectorAll('.quick-slot-item')[idx].after(picker);
-  }
-}
-
-function quickPickSvc(dateStr,dayLabel,time,name,dur){
-  selDay={dateStr,lbl:dayLabel}; selTime=time; selSvc=name; selDur=dur;
-  setSummary(); goToStep(4);
-}
-
-function setSummary(){
-  document.getElementById('selSummary').innerHTML=
-    `<strong>שירות:</strong> ${selSvc} (${selDur} דק׳)<br><strong>יום:</strong> ${selDay.lbl}<br><strong>שעה:</strong> ${selTime}<br><strong>מחיר:</strong> ₪${PRICES[selSvc]}`;
-}
-
-function pickCategory(cat){
-  selCat=cat; selSvc=''; selDur=0; selDay=null; selTime='';
-  const svcs = cat==='lashes' ? LASHES_SVCS : BROWS_SVCS;
-  document.getElementById('step2Heading').textContent = cat==='lashes' ? 'ריסים — בחרי שירות' : 'גבות — בחרי שירות';
-  document.getElementById('svcList').innerHTML = svcs.map(s=>
-    `<div class="svc-item" onclick="pickService(this,'${s.name}',${s.dur})">
-      <span class="si-name">${s.name}</span>
-      <span class="si-dur">⏱ ${s.dur} דק׳ &nbsp;·&nbsp; ₪${PRICES[s.name]}</span>
-    </div>`).join('');
-  goToStep(2);
-}
-
-function pickService(el,name,dur){
-  document.querySelectorAll('.svc-item').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  selSvc=name; selDur=dur; selDay=null; selTime='';
-  document.getElementById('step3Sub').textContent=`${name} · ${dur} דק׳`;
-  renderWizardDays();
-  goToStep(3);
-}
-
-function renderWizardDays(){
-  const grid=document.getElementById('daysGrid');
-  grid.innerHTML='';
-  document.getElementById('timesSection').classList.add('hidden');
-  document.getElementById('noTimesMsg').classList.add('hidden');
-  document.getElementById('standbySection').classList.add('hidden');
-  const today=new Date().toISOString().split('T')[0];
-  const dates=Object.keys(avail).filter(d=>d>=today).sort();
-  if(!dates.length){
-    grid.innerHTML='<span style="color:#bbb;font-size:.85rem;grid-column:1/-1">אין ימים פנויים כרגע</span>';
-    showStandbySection(null);
-    return;
-  }
-  dates.forEach(dateStr=>{
-    const d=new Date(dateStr+'T12:00:00');
-    const hasSlots=getAvailableStarts(dateStr,selDur).length>0;
-    const div=document.createElement('div');
-    div.className='day-card';
-    div.innerHTML=`<div class="dc-day">${DAYS_HE[d.getDay()]}</div><div class="dc-date">${d.getDate()}/${d.getMonth()+1}</div>`;
-    if(hasSlots) div.onclick=()=>pickWizardDay(div,dateStr,DAYS_HE[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1));
-    else { div.style.opacity='.35'; div.style.cursor='default'; }
-    grid.appendChild(div);
-  });
-}
-
-function showStandbySection(dateStr){
-  const sec = document.getElementById('standbySection');
-  const txt = document.getElementById('standbyJoinText');
-  sec.classList.remove('hidden');
-  if(dateStr){
-    const d=new Date(dateStr+'T12:00:00');
-    const lbl=DAYS_HE[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1);
-    txt.textContent=`אין שעות פנויות ל${selSvc} ביום ${lbl}. השאירי פרטים ונודיע לך אם יפנה מקום:`;
-  } else {
-    txt.textContent=`אין ימים פנויים כרגע ל${selSvc}. השאירי פרטים ונודיע לך כשיפנה מקום:`;
-  }
-}
-
-function pickWizardDay(el,dateStr,lbl){
-  document.querySelectorAll('.day-card').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected');
-  selDay={dateStr,lbl}; selTime='';
-  const slots=getAvailableStarts(dateStr,selDur);
-  if(!slots.length){
-    document.getElementById('timesSection').classList.add('hidden');
-    document.getElementById('noTimesMsg').classList.remove('hidden');
-    showStandbySection(dateStr);
-    return;
-  }
-  document.getElementById('noTimesMsg').classList.add('hidden');
-  document.getElementById('standbySection').classList.add('hidden');
-  document.getElementById('timesGrid').innerHTML=slots.map(s=>
-    `<div class="time-btn" onclick="pickWizardTime(this,'${s}')">${s}</div>`).join('');
-  document.getElementById('timesSection').classList.remove('hidden');
-}
-
-function pickWizardTime(el,t){
-  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('selected'));
-  el.classList.add('selected'); selTime=t;
-  setSummary(); goToStep(4);
-}
-
-function submitStandby(){
-  const name = document.getElementById('sbNameInput').value.trim();
-  const phone= document.getElementById('sbPhoneInput').value.trim();
-  if(!name)  return alert('אנא הכניסי שם');
-  if(!phone) return alert('אנא הכניסי טלפון');
-  standby.push({name,phone,svc:selSvc,dur:selDur,
-    dateStr: selDay ? selDay.dateStr : null,
-    dayLabel: selDay ? selDay.lbl : null,
-    ts: Date.now()});
-  saveAll();
-  document.getElementById('step3').classList.add('hidden');
-  document.getElementById('standbySuccessScreen').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function submitBooking(){
-  const name=document.getElementById('nameInput').value.trim();
-  const phone=document.getElementById('phoneInput').value.trim();
-  if(!name)  return alert('אנא הכניסי שם');
-  if(!phone) return alert('אנא הכניסי טלפון');
-  const still=getAvailableStarts(selDay.dateStr,selDur);
-  if(!still.includes(selTime)) return alert('השעה כבר נתפסה. אנא חזרי ובחרי שעה אחרת.');
-  const a={svc:selSvc+' ('+selDur+' דק׳)',dur:selDur,dateStr:selDay.dateStr,dayLabel:selDay.lbl,time:selTime,name,phone};
-  appts.push(a); saveAll();
-  document.getElementById('summaryBox').innerHTML=
-    `<strong>שירות:</strong> ${a.svc}<br><strong>יום:</strong> ${a.dayLabel}<br><strong>שעה:</strong> ${a.time}<br><strong>שם:</strong> ${name}<br><strong>טלפון:</strong> ${phone}<br><strong>מחיר:</strong> ₪${PRICES[selSvc]}`;
-  for(let i=1;i<=4;i++) document.getElementById('step'+i).classList.add('hidden');
-  document.getElementById('successScreen').style.display='block';
-}
-
-function resetClient(){
-  selSvc=''; selDur=0; selDay=null; selTime=''; selCat='';
-  ['nameInput','phoneInput','sbNameInput','sbPhoneInput'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
-  });
-  document.getElementById('successScreen').style.display='none';
-  document.getElementById('standbySuccessScreen').style.display='none';
-  goToStep(1);
-}
-
-// ── AVAILABILITY LOGIC ───────────────────────────────────────────────────────
-
+// ===== CORE LOGIC =====
 function getAvailableStarts(dateStr, durationMin){
   const slots = (avail[dateStr]||[]).map(timeToMin).sort((a,b)=>a-b);
   const bookedBlocks = getBookedBlocks(dateStr);
-  return slots.reduce((res,start)=>{
-    const end = start + durationMin;
+  const result = [];
+  for(let i=0;i<slots.length;i++){
+    const start=slots[i], end=start+durationMin;
     const needed=[];
     for(let t=start;t<end;t+=30) needed.push(t);
-    if(!needed.every(t=>slots.includes(t))) return res;
-    if(bookedBlocks.some(b=>start<b.end && end>b.start)) return res;
-    res.push(minToTime(start));
-    return res;
-  },[]);
+    if(!needed.every(t=>slots.includes(t))) continue;
+    if(bookedBlocks.some(b=>start<b.end&&end>b.start)) continue;
+    result.push(minToTime(start));
+  }
+  return result;
 }
 
 function getBookedBlocks(dateStr){
-  return appts.filter(a=>a.dateStr===dateStr)
-    .map(a=>({start:timeToMin(a.time),end:timeToMin(a.time)+a.dur}));
+  return appts.filter(a=>a.dateStr===dateStr).map(a=>({start:timeToMin(a.time),end:timeToMin(a.time)+a.dur}));
 }
 
 function getBlockedByBookings(dateStr){
   const blocked=new Set();
-  getBookedBlocks(dateStr).forEach(({start,end})=>{
-    for(let t=start;t<end;t+=30) blocked.add(minToTime(t));
-  });
+  getBookedBlocks(dateStr).forEach(({start,end})=>{for(let t=start;t<end;t+=30) blocked.add(minToTime(t));});
   return blocked;
 }
 
-// ── ADMIN ────────────────────────────────────────────────────────────────────
-
-function switchMode(m){
-  document.getElementById('clientView').classList.toggle('hidden',m!=='client');
-  document.getElementById('adminView').classList.toggle('hidden',m!=='admin');
-  document.getElementById('btnClient').classList.toggle('active',m==='client');
-  document.getElementById('btnAdmin').classList.toggle('active',m==='admin');
-  if(m==='admin') renderAdmin();
-  if(m==='client') goToStep(1);
-}
-
-function addDate(){
+// ===== ADMIN =====
+window.addDate = async function(){
   const val=document.getElementById('newDateInput').value;
   if(!val) return alert('בחרי תאריך');
   if(avail[val]) return alert('תאריך זה כבר קיים');
-  avail[val]=[]; saveAll(); renderAdmin();
+  await setDoc(doc(db,'availability',val),{hours:[]});
+  showToast('תאריך נוסף ✓');
 }
 
-function removeDate(dateStr){
+window.removeDate = async function(dateStr){
   if(!confirm('למחוק את כל השעות בתאריך זה?')) return;
-  delete avail[dateStr]; saveAll(); renderAdmin();
+  await deleteDoc(doc(db,'availability',dateStr));
+  showToast('תאריך נמחק');
 }
 
-function addHour(dateStr){
+window.addHour = async function(dateStr){
   const sel=document.getElementById('sel_'+dateStr);
   const hour=sel.value;
   if(!hour) return;
-  if(avail[dateStr].includes(hour)) return alert('שעה זו כבר קיימת');
-  avail[dateStr].push(hour);
-  avail[dateStr].sort();
-  saveAll(); renderAdmin();
+  const hours=[...avail[dateStr]];
+  if(hours.includes(hour)) return alert('שעה זו כבר קיימת');
+  hours.push(hour); hours.sort();
+  await updateDoc(doc(db,'availability',dateStr),{hours});
+  showToast('שעה נוספה ✓');
 }
 
-function removeHour(dateStr,hour){
-  if(getBlockedByBookings(dateStr).has(hour)){
-    return alert('שעה זו חסומה עקב תור קיים');
-  }
-  avail[dateStr]=avail[dateStr].filter(h=>h!==hour);
-  saveAll(); renderAdmin();
+window.removeHour = async function(dateStr,hour){
+  const bookedBlocked=getBlockedByBookings(dateStr);
+  if(bookedBlocked.has(hour)) return alert('שעה זו חסומה עקב תור קיים');
+  const hours=avail[dateStr].filter(h=>h!==hour);
+  await updateDoc(doc(db,'availability',dateStr),{hours});
+  showToast('שעה הוסרה');
 }
 
-function delAppt(origIdx){
+window.delAppt = async function(id){
   if(!confirm('למחוק תור זה?')) return;
-  appts.splice(origIdx,1); saveAll(); renderAdmin();
-}
-
-function markArrived(origIdx){
-  appts[origIdx].arrived=true; saveAll(); renderAdmin();
-}
-
-// Cancel with standby notification
-function cancelApptFlow(origIdx){
-  // toggle
-  if(document.getElementById('cancelPanel_'+origIdx)){
-    document.getElementById('cancelPanel_'+origIdx).remove(); return;
-  }
-  const a = appts[origIdx];
-  const aStart=timeToMin(a.time), aEnd=aStart+a.dur;
-
-  // standby matches: same service + same date (or any date)
-  const matches = standby.filter(s=>
-    s.svc===getSvcName(a.svc) && (!s.dateStr || s.dateStr===a.dateStr)
-  );
-
-  // window to next appointment
-  const nextAppt = appts
-    .map((b,i)=>({...b,i}))
-    .filter(b=>b.i!==origIdx && b.dateStr===a.dateStr && timeToMin(b.time)>=aEnd)
-    .sort((x,y)=>timeToMin(x.time)-timeToMin(y.time))[0];
-
-  const windowMin = nextAppt ? timeToMin(nextAppt.time)-aStart : 999;
-  const fittingNames = ALL_SVCS.filter(s=>s.dur<=windowMin).map(s=>s.name);
-
-  const matchesHtml = matches.length
-    ? matches.map(m=>{
-        const msg=`שלום ${m.name}! פנה מקום ל${m.svc} ב${a.dayLabel} בשעה ${a.time}. רוצה לתפוס? ענה עכשיו! 🌸`;
-        return `<div class="standby-match">
-          <div><div style="font-weight:500">${m.name}</div>
-          <div style="font-size:.78rem;color:#888">${m.svc} · ${m.phone}</div></div>
-          <a class="wa-btn-sm" href="${waLink(m.phone,msg)}" target="_blank">📱 שלחי WhatsApp</a>
-        </div>`;
-      }).join('')
-    : '<div class="no-standby-match">אין ממתינות לשירות זה</div>';
-
-  const smartHtml = nextAppt
-    ? `<div style="font-size:.78rem;background:#eeeeee;border-radius:8px;padding:8px 10px;margin-top:8px;color:#333">
-        <strong>חלון פנוי:</strong> ${a.time}–${nextAppt.time} (${windowMin} דק׳)<br>
-        <strong>שירותים אפשריים:</strong> ${fittingNames.join(' · ')}
-       </div>`
-    : '';
-
-  const panel=document.createElement('div');
-  panel.id='cancelPanel_'+origIdx;
-  panel.className='cancel-panel';
-  panel.innerHTML=`
-    <div class="cancel-panel-title">📲 ממתינות לשירות זה</div>
-    ${matchesHtml}${smartHtml}
-    <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="btn-delete" onclick="confirmCancel(${origIdx})">בטל תור ומחק</button>
-      <button class="btn-secondary" onclick="document.getElementById('cancelPanel_${origIdx}').remove()">סגור</button>
-    </div>`;
-  document.getElementById('apptItem_'+origIdx).after(panel);
-}
-
-function confirmCancel(origIdx){
-  appts.splice(origIdx,1); saveAll(); renderAdmin();
-}
-
-// Delay panel
-function showDelayPanel(origIdx){
-  if(document.getElementById('delayPanel_'+origIdx)){
-    document.getElementById('delayPanel_'+origIdx).remove(); return;
-  }
-  const a=appts[origIdx];
-  const aEnd=timeToMin(a.time)+a.dur;
-  const subsequent=appts
-    .map((b,i)=>({...b,origIdx:i}))
-    .filter(b=>b.origIdx!==origIdx && b.dateStr===a.dateStr && timeToMin(b.time)>=aEnd)
-    .sort((x,y)=>timeToMin(x.time)-timeToMin(y.time));
-
-  const panel=document.createElement('div');
-  panel.id='delayPanel_'+origIdx;
-  panel.className='delay-panel';
-  panel.dataset.subsequent=JSON.stringify(subsequent);
-  panel.innerHTML=`
-    <div class="delay-panel-title">⏱ דחיית תורים (מקס׳ 20 דק׳)</div>
-    <div class="delay-options">
-      ${[5,10,15,20].map(m=>`<button class="delay-opt${m===20?' selected':''}" onclick="selectDelay(${origIdx},${m})">${m} דק׳</button>`).join('')}
-    </div>
-    <div class="affected-list" id="affectedList_${origIdx}">${buildAffected(subsequent,20)}</div>
-    <button class="btn-secondary" style="margin-top:6px" onclick="document.getElementById('delayPanel_${origIdx}').remove()">סגור</button>`;
-  document.getElementById('apptItem_'+origIdx).after(panel);
-}
-
-function buildAffected(subsequent, delay){
-  if(!subsequent.length) return '<div style="font-size:.82rem;color:#888">אין תורים אחריו ביום זה</div>';
-  return subsequent.map(b=>{
-    const newTime=minToTime(timeToMin(b.time)+delay);
-    const msg=`שלום ${b.name}! הטיפול שלך ב${b.dayLabel} הוזז. התור שלך: ${newTime} (במקום ${b.time}). מחכות לך 🌸`;
-    return `<div class="affected-item">
-      <div><div style="font-weight:500">${b.name}</div>
-      <div style="font-size:.78rem;color:#888">${b.time} → ${newTime} · ${getSvcName(b.svc)}</div></div>
-      <a class="wa-btn-sm" href="${waLink(b.phone,msg)}" target="_blank">📱 WhatsApp</a>
-    </div>`;
-  }).join('');
-}
-
-function selectDelay(origIdx, mins){
-  const panel=document.getElementById('delayPanel_'+origIdx);
-  panel.querySelectorAll('.delay-opt').forEach(b=>b.classList.toggle('selected',parseInt(b.textContent)===mins));
-  const subsequent=JSON.parse(panel.dataset.subsequent);
-  document.getElementById('affectedList_'+origIdx).innerHTML=buildAffected(subsequent,mins);
-}
-
-// Reminders: appointments in next 90 min today
-function renderReminders(){
-  const now=new Date();
-  const todayStr=now.toISOString().split('T')[0];
-  const nowMin=now.getHours()*60+now.getMinutes();
-  const upcoming=appts.filter(a=>
-    a.dateStr===todayStr &&
-    timeToMin(a.time)>nowMin &&
-    timeToMin(a.time)<=nowMin+90
-  );
-  const card=document.getElementById('remindersCard');
-  if(!upcoming.length){ card.classList.add('hidden'); return; }
-  card.classList.remove('hidden');
-  document.getElementById('remindersList').innerHTML=upcoming.map(a=>{
-    const msg=`שלום ${a.name}! תזכורת לתור שלך היום בשעה ${a.time} ל${getSvcName(a.svc)} אצל Wude Eyelashes & Brows. מחכות לך! 🌸`;
-    return `<div class="reminder-item">
-      <div><div style="font-weight:500">${a.name}</div>
-      <div style="font-size:.78rem;color:#888">${a.time} · ${getSvcName(a.svc)}</div></div>
-      <a class="wa-btn" href="${waLink(a.phone,msg)}" target="_blank">📱 תזכורת</a>
-    </div>`;
-  }).join('');
-}
-
-function renderStandby(){
-  const el=document.getElementById('standbyList');
-  if(!standby.length){ el.innerHTML='<div class="no-appts">אין ממתינות כרגע</div>'; return; }
-  el.innerHTML=standby.map((s,i)=>{
-    const dateLabel=s.dayLabel||'כל יום';
-    const msg=`שלום ${s.name}! פנה מקום ל${s.svc}. רוצה לתפוס? ענה עכשיו! 🌸`;
-    return `<div class="standby-entry">
-      <div><div class="sb-svc">${s.svc}</div>
-      <div>${s.name} · ${s.phone}</div>
-      <div style="font-size:.76rem;color:#aaa">${dateLabel}</div></div>
-      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
-        <a class="wa-btn-sm" href="${waLink(s.phone,msg)}" target="_blank">📱 הודעה</a>
-        <button class="btn-delete" onclick="removeStandby(${i})">הסר</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function removeStandby(i){
-  standby.splice(i,1); saveAll(); renderStandby();
+  await deleteDoc(doc(db,'appointments',id));
+  showToast('תור נמחק');
 }
 
 function renderAdmin(){
@@ -815,116 +365,176 @@ function renderAdmin(){
   const today=new Date().toISOString().split('T')[0];
   document.getElementById('newDateInput').min=today;
   const dates=Object.keys(avail).sort();
+  if(!dates.length){container.innerHTML='<div class="no-dates">אין תאריכים. הוסיפי תאריך למעלה.</div>';renderAppts();return;}
 
-  if(!dates.length){
-    container.innerHTML='<div class="no-dates">אין תאריכים. הוסיפי תאריך למעלה.</div>';
-  } else {
-    container.innerHTML=dates.map(dateStr=>{
-      const d=new Date(dateStr+'T12:00:00');
-      const dayName=DAYS_HE[d.getDay()];
-      const dateDisplay=dayName+' '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
-      const bookedBlocked=getBlockedByBookings(dateStr);
-      const hours=avail[dateStr];
-      const freeCount=hours.filter(h=>!bookedBlocked.has(h)).length;
-      const dayRevenue=appts.filter(a=>a.dateStr===dateStr).reduce((sum,a)=>sum+getPrice(a.svc),0);
-      const chipsHtml=hours.length
-        ? hours.map(h=>{
-            const isBooked=bookedBlocked.has(h);
-            const appt=appts.find(a=>a.dateStr===dateStr&&timeToMin(h)>=timeToMin(a.time)&&timeToMin(h)<timeToMin(a.time)+a.dur);
-            const label=appt?`${h} 🔒 ${appt.name}`:h;
-            return `<div class="hour-chip ${isBooked?'booked':'free'}">
-              ${label}
-              ${!isBooked?`<button class="chip-del" onclick="removeHour('${dateStr}','${h}')">✕</button>`:''}
-            </div>`;
-          }).join('')
-        : '<span style="color:#bbb;font-size:.82rem">אין שעות עדיין</span>';
-      const opts=ALL_HOURS.filter(h=>!hours.includes(h)).map(h=>`<option>${h}</option>`).join('');
-      return `
-        <div class="date-block">
-          <div class="date-block-header">
-            <span class="dh-left">📅 ${dateDisplay}</span>
-            <span class="dh-right">
-              <span class="slot-count">${freeCount} פנויות</span>
-              ${dayRevenue>0?`<span style="color:#27662a;font-size:.8rem;font-weight:500">💰 ₪${dayRevenue}</span>`:''}
-              <button class="btn-remove-date" onclick="removeDate('${dateStr}')">מחק יום</button>
-            </span>
-          </div>
-          <div class="date-block-body">
-            <div class="legend">
-              <div class="leg"><div class="leg-dot free"></div> פנוי</div>
-              <div class="leg"><div class="leg-dot booked"></div> תפוס</div>
-            </div>
-            <div class="hours-grid">${chipsHtml}</div>
-            <div class="add-hour-row">
-              <select id="sel_${dateStr}">${opts}</select>
-              <button class="btn-add-hour" onclick="addHour('${dateStr}')">+ הוסיפי שעה</button>
-            </div>
-          </div>
-        </div>`;
-    }).join('');
-  }
+  container.innerHTML=dates.map(dateStr=>{
+    const d=new Date(dateStr+'T12:00:00');
+    const dayName=DAYS_HE[d.getDay()];
+    const dateDisplay=dayName+' '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+    const bookedBlocked=getBlockedByBookings(dateStr);
+    const hours=avail[dateStr];
+    const freeCount=hours.filter(h=>!bookedBlocked.has(h)).length;
 
+    const chipsHtml=hours.length
+      ?hours.map(h=>{
+        const isBooked=bookedBlocked.has(h);
+        const appt=appts.find(a=>a.dateStr===dateStr&&timeToMin(h)>=timeToMin(a.time)&&timeToMin(h)<timeToMin(a.time)+a.dur);
+        const label=appt?`${h} 🔒 ${appt.name}`:h;
+        return `<div class="hour-chip ${isBooked?'booked':'free'}">${label}${!isBooked?`<button class="chip-del" onclick="removeHour('${dateStr}','${h}')">✕</button>`:''}</div>`;
+      }).join('')
+      :'<span style="color:#bbb;font-size:.82rem">אין שעות עדיין</span>';
+
+    const availHours=ALL_HOURS.filter(h=>!hours.includes(h));
+    const opts=availHours.map(h=>`<option>${h}</option>`).join('');
+
+    return `<div class="date-block">
+      <div class="date-block-header">
+        <span class="dh-left">📅 ${dateDisplay}</span>
+        <span class="dh-right">
+          <span class="slot-count">${freeCount} פנויות</span>
+          <button class="btn-remove-date" onclick="removeDate('${dateStr}')">מחק יום</button>
+        </span>
+      </div>
+      <div class="date-block-body">
+        <div class="legend">
+          <div class="leg"><div class="leg-dot free"></div> פנוי</div>
+          <div class="leg"><div class="leg-dot booked"></div> תפוס</div>
+        </div>
+        <div class="hours-grid">${chipsHtml}</div>
+        <div class="add-hour-row">
+          <select id="sel_${dateStr}">${opts}</select>
+          <button class="btn-add-hour" onclick="addHour('${dateStr}')">+ הוסיפי שעה</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
   renderAppts();
-  renderStandby();
-  renderRevenueCard();
-  renderReminders();
 }
 
 function renderAppts(){
   const el=document.getElementById('apptList');
-  if(!appts.length){ el.innerHTML='<div class="no-appts">אין תורים עדיין</div>'; return; }
-  const sorted=appts.map((a,origIdx)=>({...a,origIdx}))
-    .sort((a,b)=>a.dateStr.localeCompare(b.dateStr)||a.time.localeCompare(b.time));
-  el.innerHTML=sorted.map(a=>`
-    <div class="appt-item${a.arrived?' arrived':''}" id="apptItem_${a.origIdx}">
+  if(!appts.length){el.innerHTML='<div class="no-appts">אין תורים עדיין</div>';return;}
+  el.innerHTML=appts.map(a=>`
+    <div class="appt-item">
       <div>
         <div class="appt-service">${a.svc}</div>
         <div style="line-height:1.7">${a.dayLabel} · ${a.time} (${a.dur} דק׳)<br>${a.name} · ${a.phone}</div>
-        <div style="color:#27662a;font-size:.82rem;font-weight:600;margin-top:3px">₪${getPrice(a.svc)}</div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0">
-        ${!a.arrived
-          ?`<button class="btn-arrived" onclick="markArrived(${a.origIdx})">הגיעה ✓</button>`
-          :`<span style="color:#27662a;font-size:.76rem;font-weight:600;text-align:center">✓ הגיעה</span>`}
-        <button class="btn-delay"        onclick="showDelayPanel(${a.origIdx})">⏱ דחי</button>
-        <button class="btn-cancel-appt"  onclick="cancelApptFlow(${a.origIdx})">בטל תור</button>
-        <button class="btn-delete"       onclick="delAppt(${a.origIdx})">מחק</button>
-      </div>
+      <button class="btn-delete" onclick="delAppt('${a.id}')">מחק</button>
     </div>`).join('');
 }
 
-function renderRevenueCard(){
-  const card=document.getElementById('revenueCard');
-  if(!appts.length){
-    card.innerHTML=`<div style="opacity:.6;font-size:.85rem;text-align:center;padding:6px 0">אין תורים עדיין — הרווח יחושב כאן</div>`;
-    return;
-  }
-  const earned =appts.filter(a=>a.arrived).reduce((s,a)=>s+getPrice(a.svc),0);
-  const pending=appts.filter(a=>!a.arrived).reduce((s,a)=>s+getPrice(a.svc),0);
-  const total=earned+pending;
-  const mW=appts.filter(a=>a.arrived).reduce((s,a)=>s+a.dur,0);
-  const mP=appts.filter(a=>!a.arrived).reduce((s,a)=>s+a.dur,0);
-  function fmtHrs(m){const h=Math.floor(m/60),mn=m%60;return mn?`${h}:${String(mn).padStart(2,'0')}`:`${h}`}
-  card.innerHTML=`
-    <div style="font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:14px;opacity:.8">סיכום</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center;margin-bottom:14px">
-      <div><div style="font-size:1.4rem;font-weight:600;color:#9ae09a">₪${earned}</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">הרווחתי</div></div>
-      <div><div style="font-size:1.4rem;font-weight:600">₪${pending}</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">צפוי</div></div>
-      <div style="border-right:1px solid rgba(255,255,255,.15);padding-right:10px">
-        <div style="font-size:1.4rem;font-weight:600;color:#e8c9b0">₪${total}</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">סה״כ</div>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center">
-      <div><div style="font-size:1.2rem;font-weight:600;color:#9ae09a">${fmtHrs(mW)}ש׳</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">עבדתי</div></div>
-      <div><div style="font-size:1.2rem;font-weight:600">${fmtHrs(mP)}ש׳</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">צפוי</div></div>
-      <div style="border-right:1px solid rgba(255,255,255,.15);padding-right:10px">
-        <div style="font-size:1.2rem;font-weight:600;color:#e8c9b0">${fmtHrs(mW+mP)}ש׳</div><div style="font-size:.72rem;opacity:.6;margin-top:3px">סה״כ שעות</div>
-      </div>
-    </div>`;
+// ===== CLIENT =====
+function renderDays(){
+  const list=document.getElementById('daysList');
+  list.innerHTML=''; selDay=null; selTime='';
+  document.getElementById('slotsSection').classList.add('hidden');
+  document.getElementById('noSlotsMsg').classList.add('hidden');
+  const today=new Date().toISOString().split('T')[0];
+  const dates=Object.keys(avail).filter(d=>d>=today).sort();
+  if(!dates.length){list.innerHTML='<span style="color:#bbb;font-size:.85rem">אין ימים פנויים כרגע</span>';return;}
+  dates.forEach(dateStr=>{
+    const d=new Date(dateStr+'T12:00:00');
+    const lbl=DAYS_HE[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1);
+    const btn=document.createElement('button');
+    btn.className='day-pill'; btn.textContent=lbl;
+    btn.onclick=()=>pickDay(btn,dateStr,lbl);
+    list.appendChild(btn);
+  });
 }
 
-document.getElementById('newDateInput').min = new Date().toISOString().split('T')[0];
-goToStep(1);
+window.pickDay = function(el,dateStr,lbl){
+  document.querySelectorAll('.day-pill').forEach(p=>p.classList.remove('selected'));
+  el.classList.add('selected');
+  selDay={dateStr,lbl}; selTime='';
+  renderSlots();
+}
+
+function renderSlots(){
+  if(!selDay||!selDur){
+    document.getElementById('slotsSection').classList.add('hidden');
+    document.getElementById('noSlotsMsg').classList.add('hidden');
+    return;
+  }
+  const slots=getAvailableStarts(selDay.dateStr,selDur);
+  if(!slots.length){
+    document.getElementById('slotsSection').classList.add('hidden');
+    document.getElementById('noSlotsMsg').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('noSlotsMsg').classList.add('hidden');
+  document.getElementById('noticeBox').textContent=`השירות שבחרת לוקח ${selDur} דק׳. מוצגות רק שעות שיש אחריהן מספיק זמן רצוף.`;
+  document.getElementById('slotsSection').classList.remove('hidden');
+  document.getElementById('slotsList').innerHTML=slots.map(s=>`<div class="time-slot" onclick="pickTime(this,'${s}')">${s}</div>`).join('');
+}
+
+window.pickTime = function(el,t){
+  document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected'); selTime=t;
+}
+
+window.switchCat = function(cat,el){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('lashes').classList.toggle('hidden',cat!=='lashes');
+  document.getElementById('brows').classList.toggle('hidden',cat!=='brows');
+  selSvc=''; selDur=0; selTime='';
+  document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+  renderSlots();
+}
+
+window.selectSvc = function(el,name,dur){
+  document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selSvc=name; selDur=dur; selTime='';
+  document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
+  renderSlots();
+}
+
+window.submitBooking = async function(){
+  const name=document.getElementById('nameInput').value.trim();
+  const phone=document.getElementById('phoneInput').value.trim();
+  if(!selSvc) return alert('אנא בחרי שירות');
+  if(!selDay) return alert('אנא בחרי יום');
+  if(!selTime) return alert('אנא בחרי שעה');
+  if(!name) return alert('אנא הכניסי שם');
+  if(!phone) return alert('אנא הכניסי טלפון');
+
+  const still=getAvailableStarts(selDay.dateStr,selDur);
+  if(!still.includes(selTime)) return alert('השעה כבר נתפסה. אנא בחרי שעה אחרת.');
+
+  const a={svc:selSvc+' ('+selDur+' דק׳)',dur:selDur,dateStr:selDay.dateStr,dayLabel:selDay.lbl,time:selTime,name,phone,createdAt:new Date().toISOString()};
+  await addDoc(collection(db,'appointments'),a);
+
+  document.getElementById('summaryBox').innerHTML=
+    `<strong>שירות:</strong> ${a.svc}<br><strong>יום:</strong> ${a.dayLabel}<br><strong>שעה:</strong> ${a.time}<br><strong>שם:</strong> ${name}<br><strong>טלפון:</strong> ${phone}`;
+  document.getElementById('clientForm').style.display='none';
+  document.getElementById('successScreen').style.display='block';
+}
+
+window.resetClient = function(){
+  selSvc=''; selDur=0; selDay=null; selTime='';
+  document.getElementById('nameInput').value='';
+  document.getElementById('phoneInput').value='';
+  document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('clientForm').style.display='block';
+  document.getElementById('successScreen').style.display='none';
+  renderDays();
+}
+
+window.switchMode = function(m){
+  document.getElementById('clientView').classList.toggle('hidden',m!=='client');
+  document.getElementById('adminView').classList.toggle('hidden',m!=='admin');
+  document.getElementById('btnClient').classList.toggle('active',m==='client');
+  document.getElementById('btnAdmin').classList.toggle('active',m==='admin');
+  if(m==='admin') renderAdmin();
+  if(m==='client') renderDays();
+}
+
+// Init
+const todayVal=new Date().toISOString().split('T')[0];
+document.getElementById('newDateInput').min=todayVal;
 </script>
+
 </body>
 </html>
